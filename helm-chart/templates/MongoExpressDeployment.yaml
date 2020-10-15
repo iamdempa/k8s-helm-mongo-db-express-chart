@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.mongo_express_deployment_name }}    
+  labels:
+    app: {{ .Values.mongo_express_deployment_name }}
+spec:
+  replicas: {{ .Values.mongoexpress_replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.mongo_express_deployment_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mongo_express_deployment_name }}
+    spec:
+      containers:
+      - name: {{ .Values.mongo_express_deployment_name }}
+        image: {{ .Values.mongo_express_image }}
+        ports:
+        - containerPort: {{ .Values.mongoexpress_container_port }}
+        env:
+        - name: ME_CONFIG_MONGODB_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Values.configmap_name }}
+              key: {{ .Values.configmap_db_url_key }}
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secret_name }}
+              key: {{ .Values.mongo_username_key }}
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secret_name }}
+              key: {{ .Values.mongo_password_key }}
+        volumeMounts:
+        - name: {{ .Values.volume_name }}  
+          mountPath: {{ .Values.volume_mount_path }}
+      volumes: 
+        - name: {{ .Values.volume_name }}
+          persistentVolumeClaim: 
+            claimName: {{ .Values.pvc_name }}   
