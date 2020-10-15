@@ -1,0 +1,9 @@
+apiVersion: v2
+name: Mongo-Express MongoDB deployment
+description: A simple mongo-express and mongodb helm chart
+type: application
+
+version: 0.1.0
+
+
+appVersion: 1.16.0

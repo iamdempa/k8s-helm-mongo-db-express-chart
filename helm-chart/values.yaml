@@ -1,0 +1,48 @@
+secret_name: mongodb-secret
+mongo_username: dXNlcm5hbWU=
+mongo_password: cGFzc3dvcmQ=
+
+configmap_name: mongodb-url
+configmap_db_url: mongodb-service
+configmap_db_url_key: database_url
+
+pv_name: task-pv-volume
+pv_label_name: mynfs
+storage_class: manual
+storage: 10Gi
+access_mode: ReadWriteMany
+nfs_server_ip: 35.236.20.83
+path: "/srv/nfs/mydata"
+
+pvc_name: task-pv-claim
+pvc_storage: 1Gi
+
+mongo_deployment_name: mongodb-deployment
+mongodb_replicas: 1
+mongodb_label: mongodb
+mongodb_image: mongo
+mongodb_container_port: 27017
+mongo_username_key: mongo-username
+mongo_password_key: mongo-password
+
+volume_mount_path: /data/db
+volume_name: data
+
+
+mongo_express_deployment_name: mongo-express
+mongo_express_label_name: mongo-express
+mongo_express_image: mongo-express
+mongoexpress_replicas: 2
+mongoexpress_container_port: 8081
+
+mongodb_service_name: mongodb-service
+protocol: TCP
+mongodb_service_port: 27017
+mongodb_target_port: 27017
+
+mongoexpress_service_name: mongo-express-service
+mongoexpress_service_port: 8081
+mongoexpress_target_port: 8081
+nodeport: 30000
+
+service_type: LoadBalancer
