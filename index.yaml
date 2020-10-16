@@ -3,7 +3,7 @@ entries:
   mongo-db-express-deployment-v1:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-10-16T13:48:17.018935704+05:30"
+    created: "2020-10-16T13:49:43.347725865+05:30"
     description: A simple mongo-express and mongodb helm chart
     digest: c06be926554a174b1db9e904ce74f23f8361c1357bbb336118cb067c9454faf7
     name: mongo-db-express-deployment-v1
@@ -11,4 +11,4 @@ entries:
     urls:
     - https://iamdempa.github.io/k8s-helm-mongo-db-express-chart/mongo-db-express-deployment-v1-0.1.0.tgz
     version: 0.1.0
-generated: "2020-10-16T13:48:17.018343426+05:30"
+generated: "2020-10-16T13:49:43.346474978+05:30"
