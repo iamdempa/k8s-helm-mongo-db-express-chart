@@ -1,5 +1,5 @@
 apiVersion: v2
-name: mongo-db-express-deployment-v1
+name: mongo-db-express-deployment
 description: A simple mongo-express and mongodb helm chart
 type: application
 
