@@ -5,7 +5,7 @@ helm repo add k8s-helm-mongo-db-express-chart https://iamdempa.github.io/k8s-hel
 ```
 
 ```
-helm install k8s-helm-mongo-db-express-chart/mongo-db-express-deployment --generate-name
+helm install --set nfs_server_ip=<ip-of-nfs-server> k8s-helm-mongo-db-express-chart/mongo-db-express-deployment --generate-name
 ```
 
 
